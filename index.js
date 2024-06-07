@@ -19,7 +19,7 @@ async function onFormSubmit(event) {
     const data = await tokenResponse.json()
     const accessToken = data.access
 
-    const usersResponse = await fetch("http://localhost:8000/api/v1/notes/", {
+    const notesResponse = await fetch("http://localhost:8000/api/v1/notes/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -29,9 +29,9 @@ async function onFormSubmit(event) {
 
     usersContainer.textContent = ""
 
-    const usersData = await usersResponse.json()
+    const notesData = await notesResponse.json()
 
-    usersData.forEach(user => {
+    notesData.forEach(note => {
         usersContainer.innerHTML += `
             <p>${note.title} - ${note.body}</p>
         `

@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-
+from .models import Note
 from rest_framework.serializers import ModelSerializer, ChoiceField
 
 User = get_user_model()
@@ -54,3 +54,11 @@ class UserSerializer(ModelSerializer):
             representation['status'] = 'user'
 
         return representation
+
+
+class NoteSerializer(ModelSerializer):
+
+
+    class Meta:
+        model = Note
+        fields = ['title','body']

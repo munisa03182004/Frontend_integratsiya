@@ -7,6 +7,7 @@ from . import views
 
 router = DefaultRouter()
 router.register(basename='users', viewset=views.UserViewSet, prefix='users')
+router.register(basename='notes', viewset=views.NoteViewSet,prefix='notes')
 
 urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

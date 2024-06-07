@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from.models import Note
 
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
@@ -39,3 +40,10 @@ class UserViewSet(ModelViewSet):
             return Response(data={"detail": "You don't have permission to perform this action"},
                             status=status.HTTP_403_FORBIDDEN)
         return super().destroy(request, *args, **kwargs)
+
+
+
+class NoteViewSet(ModelViewSet):
+    queryset = Note.objects.all()
+    serializer_class = serializers.NoteSerializer
+    permission_classes = [IsAuthenticated]
